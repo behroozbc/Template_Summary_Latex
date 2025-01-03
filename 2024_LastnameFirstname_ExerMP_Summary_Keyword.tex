@@ -65,14 +65,14 @@ recordings and sheet music. The core concept is to extract meaningful
 features from these representations and then employ a technique called
 Dynamic Time Warping (DTW) to find the optimal temporal correspondence
 between them.
-
-The text emphasizes the importance of \textbf{chroma features} in music
+\section{Audio Features}
+The chapter emphasizes the importance of \textbf{chroma features} in music
 synchronization. Chroma features essentially capture the distribution of
 energy across the 12 pitch classes (C, C\#, D, ..., B) while
 disregarding octave information. This characteristic makes them robust
 to variations in timbre and dynamics, allowing for effective comparison
 of different musical interpretations.
-
+\subsection{Log-Frequency Spectrogram}
 The process of extracting chroma features starts with a
 \textbf{log-frequency spectrogram}. The \emph{Log-Frequency Spectrogram}
 elucidates the transformation of an audio recording into a
@@ -137,8 +137,8 @@ representing low pitches:
     representation is fundamental to music synchronization as it captures
     the essential harmonic information while remaining robust to variations
     in timbre and instrumentation.
-    
-    \textbf{Chroma features} are derived from the log-frequency spectrogram
+    \subsection{Chroma features}
+    Chroma features are derived from the log-frequency spectrogram
     and essentially aggregate all spectral information related to a
     particular pitch class into a single coefficient.
     
@@ -192,23 +192,12 @@ representing low pitches:
     music. It concludes by emphasizing that the choice of specific chroma
     feature variants and processing techniques depends heavily on the
     intended application.
-    
-    The chapter further discusses various preprocessing techniques that can
-    enhance the quality and effectiveness of chroma features, including:
-    
-    \begin{itemize}
-    \item
-      \textbf{Logarithmic Compression:} This step helps to balance out the
-      large dynamic range of chroma features, enhancing the small but
-      relevant values that may be obscured by larger values.
-    \item
-      \textbf{Normalization:} This process ensures that the chroma vectors
-      are invariant to changes in dynamics, making them more comparable.
-    \end{itemize}
-    
-    \textbf{Dynamic Time Warping (DTW)} is then introduced as a technique
-    for aligning two sequences of chroma features. DTW aims to find an
-    optimal alignment that minimizes the total cost of matching
+
+    \section{Dynamic Time Warping (DTW)}
+   Dynamic Time Warping (DTW) is then introduced as a technique
+    for aligning two sequences of chroma features.
+    \subsection{ Basic Approach}
+    DTW aims to find an optimal alignment that minimizes the total cost of matching
     corresponding elements in the sequences, effectively compensating for
     differences in tempo between different musical interpretations.
     
@@ -240,8 +229,8 @@ representing low pitches:
     The algorithm operates by recursively building an accumulated cost
     matrix, where each entry represents the minimum cost of aligning
     prefixes of the two input sequences.
-    
-    Several \textbf{DTW variants} are presented, each offering specific
+    \subsection{DTW variants}
+    Several DTW variants are presented, each offering specific
     controls and optimizations for the alignment process:
     
     \begin{itemize}
@@ -264,9 +253,8 @@ representing low pitches:
       it at progressively higher resolutions, allowing for more efficient
       and robust alignment of long sequences.
     \end{itemize}
-    
-    The text concludes by discussing various applications of music
-    synchronization techniques:
+    \section{Applications}
+    A few applications of music synchronization:
     
     \begin{itemize}
     \item
@@ -284,8 +272,8 @@ representing low pitches:
       it is possible to extract tempo curves that represent the relative
       tempo changes in the performance compared to the reference.
     \end{itemize}
-    
-    In summary, the text provides a comprehensive overview of the key
+    \section{In The End}
+    The chapter provides a comprehensive overview of the key
     concepts, techniques, and applications of music synchronization,
     highlighting the role of chroma features and Dynamic Time Warping in
     aligning different musical representations. It also emphasizes the
@@ -293,7 +281,11 @@ representing low pitches:
     the alignment process, and showcases the potential of music
     synchronization for enhancing the user experience and facilitating music
     analysis.
-    
+    \section{Feedback}
+    \begin{itemize}
+      \item This report helped me better understand the DTW variants, and I really liked the technique related to Multiscale DTW.
+      \item I did not mention the online approach of DTW because did not understand it.
+    \end{itemize}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \section{Main Section}
 % \label{section:main}
