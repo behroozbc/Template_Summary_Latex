@@ -31,7 +31,7 @@
 
 \title{\vspace{-8mm}\textbf{\Large
     Music Synchronization\footnote{This is the summary for the reading assignment,
-      which is part of the exercise of the lecture \emph{Music Processing Analysis}, Winter Term 2023/24,
+      which is part of the exercise of the lecture \emph{Music Processing Analysis}, Winter Term 2024/25,
       Friedrich-Alexander Universit\"at Erlangen-N\"urnberg.
       Instructor: Prof.\ Dr.\ Meinard M\"uller,
       Tutor: Simon Schw\"ar.
@@ -64,8 +64,13 @@ involves aligning different musical representations, such as audio
 recordings and sheet music. The core concept is to extract meaningful
 features from these representations and then employ a technique called
 Dynamic Time Warping (DTW) to find the optimal temporal correspondence
-between them.
+between them. Let's start, explains some usefull definitions 
+\textbf{equal-tempered scale},In the twelve-tone equal-tempered scale,
+the octave is divided into twelve scale steps with equally spaced
+fundamental frequencies on a logarithmic frequency axis.
+
 \section{Audio Features}
+\label{section:Audio Features}
 The chapter emphasizes the importance of \textbf{chroma features} in music
 synchronization. Chroma features essentially capture the distribution of
 energy across the 12 pitch classes (C, C\#, D, ..., B) while
@@ -79,7 +84,6 @@ elucidates the transformation of an audio recording into a
 representation that reveals the energy distribution across different
 pitches. This is a crucial step in music synchronization as it makes
 music data comparable and algorithmically accessible.
-
 The process leverages the \textbf{logarithmic perception of frequency in
   human hearing} and aims to create a time-frequency representation where
 the frequency axis is logarithmic and labeled by the pitches of the
@@ -106,10 +110,8 @@ Here\textquotesingle s a breakdown of the process:
         This results in a representation where the frequency axis is now
         logarithmic and labeled by MIDI pitches.
 \end{enumerate}
-
 However, this process encounters challenges, particularly in
 representing low pitches:
-
 \begin{itemize}
   \item
         \textbf{Limited Frequency Resolution:} The STFT\textquotesingle s
@@ -123,7 +125,6 @@ representing low pitches:
         leads to a decrease in temporal resolution, potentially losing crucial
         information about note onsets.
 \end{itemize}
-
 A solution to these challenges is a \textbf{multiresolution approach}.
 This involves using multiple spectrograms computed with different
 sampling rates and window sizes. A higher sampling rate and shorter
@@ -152,10 +153,19 @@ This results in a \textbf{chromagram}, a time-chroma representation
 where each time frame is characterized by a 12-dimensional vector
 representing the energy distribution across the 12 chroma values.
 
-A chromagram can be generated from a musical score by extracting the notes, mapping each to one of the 12 pitch classes (ignoring octaves), accumulating the duration or intensity of each pitch class throughout the score, and then creating a visual representation where the pitch classes are on the x-axis and the accumulated values on the y-axis. This results in a 12-dimensional vector for each time frame, providing a snapshot of the harmonic content.
-The advantages of using chroma features is \textbf{Chroma features aggregate all the spectral information relating to a given pitch class into a single coefficient.},
-\textbf{Chroma features can be normalized to be invariant to changes in dynamics.} and
-\textbf{Chroma features are well-suited to characterize the melodic and harmonic progression of music}.
+A chromagram can be generated from a musical score by extracting
+the notes, mapping each to one of the 12 pitch classes (ignoring octaves),
+accumulating the duration or intensity of each pitch class
+throughout the score, and then creating a visual representation
+where the pitch classes are on the x-axis and the accumulated
+values on the y-axis. 
+This results in a 12-dimensional vector for each time frame, providing a snapshot of the harmonic content.
+The advantages of using chroma features is \textbf{Chroma features
+aggregate all the spectral information relating to a given pitch class into a single coefficient},
+\textbf{Chroma features can be normalized to be invariant to
+changes in dynamics} and
+\textbf{Chroma features are well-suited to characterize the
+melodic and harmonic progression of music}.
 % The highlights the following \textbf{advantages of using chroma
 % features}:
 
@@ -232,7 +242,6 @@ prefixes of the two input sequences.
 \subsection{DTW variants}
 Several DTW variants are presented, each offering specific
 controls and optimizations for the alignment process:
-
 \begin{itemize}
   \item
         \textbf{Modified Step Size Condition}: By adjusting the allowed steps
@@ -255,16 +264,15 @@ controls and optimizations for the alignment process:
 \end{itemize}
 \section{Applications}
 A few applications of music synchronization:
-
 \begin{itemize}
   \item
-        \textbf{Multimodal Music Navigation}: Synchronization results can be
+        \textbf{Multimodal Music Navigation}\cite{Damm2012}: Synchronization results can be
         used to create user interfaces that allow users to browse and explore
         music in a multimodal way. An example is the \textbf{Interpretation
           Switcher}, which enables seamless switching between different
         recordings of the same musical work.
   \item
-        \textbf{Score Viewer Interface}: This interface provides a
+        \textbf{Score Viewer Interface}\cite{inproceedings}: This interface provides a
         synchronized view of sheet music and an audio recording, highlighting
         the corresponding musical measures during playback.
   \item
@@ -275,7 +283,7 @@ A few applications of music synchronization:
 \section{In The End}
 The chapter provides a comprehensive overview of the key
 concepts, techniques, and applications of music synchronization,
-highlighting the role of chroma features and Dynamic Time Warping in
+highlighting the role of chroma features and DTW in
 aligning different musical representations. It also emphasizes the
 importance of understanding the various DTW variants and their impact on
 the alignment process, and showcases the potential of music
